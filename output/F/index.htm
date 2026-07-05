@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js">
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Bubblez">
+    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui,shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Fireboy & Watergirl 6 Fairy Tales">
+    <title>Fireboy & Watergirl 6 Fairy Tales</title>
+    <script type="text/javascript">
+    document.domain = '4399.com'
+    </script>
+    <link rel="manifest" href="manifest.json">
+    <script>
+    var gtag;
+    </script>
+</head>
+
+<body style="margin: 0px; overflow:hidden;">
+    <script type="text/javascript">
+    window.requireNode = window.require;
+    window.require = undefined;
+    </script>
+    <script src="bower_components/requirejs/require.js"></script>
+    <div id="root">
+        <div id="container"></div>
+        <div id="hammer"></div>
+        <div id="debug-fps" style="color:#ff0000; position: absolute; top: 0;"></div>
+    </div>
+
+    <!--TRAKING CODE PLEASE REMOVE-->
+    <script
+        async
+        src="https://analytics.sparkslab.art/script.js"
+        data-website-id="fd5006ab-46ee-4ba0-9cca-143ef870d1bd"
+        data-domains="apps.ak-ioi.com"
+    ></script>
+
+    <!--DO NOT REMOVE THIS-->
+    <script>
+        /**
+         * Tracked:
+         * nothing
+         */
+        /**
+         * The tracking function
+         */
+        window.sendAnalyticsEvent = (name) => {
+            if(window.umami) {
+                window.umami.track(name)
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+    // var enableAnalytics;
+    var gameName = "fairy-tales.min.js";
+
+
+    //This all here is for cache busting;
+    function addScript(src, buster, callback) {
+        var s = document.createElement('script');
+        s.setAttribute('src', src + '?v=' + buster);
+        if (typeof callback === 'function') {
+            s.onload = callback;
+        }
+        document.body.appendChild(s);
+    }
+
+
+
+
+
+
+    addScript('version.js', Date.now(), function() {
+
+
+
+        require(["fairy-tales.min.js?vvvv=14&v=" + version]);
+
+
+    });
+    </script>
+
+    <!-- FullScreen Controller -->
+    <div class="fullscreen-button">
+        全屏
+    </div>
+    <style>
+        .fullscreen-button {
+            position:fixed;
+            left:0;
+            top:0;
+            padding:6px 8px;
+            font-size: 14px;
+            background-color:#00000077;
+            color: #FFFFFF77;
+            user-select:none;
+            cursor:pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        (() => {
+            var is_wap = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+            if(is_wap) {
+                document.querySelector('.fullscreen-button').onclick = function() {
+                    document.documentElement.requestFullscreen();
+                };
+                var check_func = () => {
+                    if(document.fullscreenElement) {
+                        document.querySelector('.fullscreen-button').style.display = 'none';
+                    } else {
+                        document.querySelector('.fullscreen-button').style.display = 'block';
+                    }
+                    requestAnimationFrame(check_func);
+                };
+                requestAnimationFrame(check_func);
+            } else {
+                document.querySelector('.fullscreen-button').style.display = 'none';
+            }
+        })();
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"177e03f818ae4f26ab3b1ab521701133","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+</html>
