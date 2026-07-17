@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Fireboy &amp; Watergirl in The Light Temple</title>
+    <link rel="icon" sizes="60x60" href="../../img/icon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow: hidden; background: #000; }
+        .game-ui-btn {
+            position: fixed;
+            z-index: 9999;
+            padding: 6px 10px;
+            font-size: 13px;
+            background: rgba(0,0,0,0.55);
+            color: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            user-select: none;
+            font-family: sans-serif;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .game-ui-btn:hover { background: rgba(0,0,0,0.8); color: #fff; }
+        #btn-back { left: 0; top: 0; border-radius: 0 0 6px 0; }
+        #btn-fullscreen { right: 0; top: 0; border-radius: 0 0 0 6px; display: none; }
+    </style>
+</head>
+<body>
+    <script>
+        window.requireNode = window.require;
+        window.require = undefined;
+    </script>
+
+    <script data-main="js/game.js" src="../lib/require.js"></script>
+
+    <div id="root">
+        <div id="container"></div>
+        <div id="hammer"></div>
+    </div>
+
+    <a id="btn-back" class="game-ui-btn" href="../../">&#8592; Menu</a>
+    <button id="btn-fullscreen" class="game-ui-btn" onclick="document.documentElement.requestFullscreen()">Fullscreen</button>
+
+    <script>
+        (() => {
+            const btn = document.getElementById('btn-fullscreen');
+            btn.style.display = 'block';
+            const update = () => {
+                btn.style.display = document.fullscreenElement ? 'none' : 'block';
+                requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# HAR capture files (large, only needed for resource extraction)
+har/
+
+# Python cache
+__pycache__/
+*.pyc

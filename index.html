@@ -1,11 +1,9 @@
-<!-- ALL CODE ON THIS FILE IS BY AI, BUT/AND MAJORIZATION BY 1224HuangJin-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>森林冰火人全系列在线玩 | Fireboy & Watergirl Play Online</title>
-    <!-- Icon Image From: https://new66ez.github.io/img/fireboyandwatergirl/fireboy-and-watergirl.png-->
+    <title>Fireboy &amp; Watergirl Play Online</title>
     <link rel="icon" type="image/x-icon" href="img/icon.png">
     <style>
         :root {
@@ -24,7 +22,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
-            color: #ffffff;
+            color: #fff;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -32,14 +30,12 @@
             justify-content: center;
             padding: 20px;
             overflow-x: hidden;
-            /* Background from: https://www.duitang.com/blog/?id=1307216125 */
             background-image: url("img/background.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
         }
 
-        /* 背景流光点缀 */
         body::before, body::after {
             content: '';
             position: absolute;
@@ -64,8 +60,8 @@
             margin-bottom: 10px;
             background: linear-gradient(45deg, var(--fire-color), var(--water-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255,255,255,0.1);
         }
 
         header p {
@@ -73,8 +69,7 @@
             font-size: 1.1rem;
         }
 
-        /* 游戏卡片网格 */
-        .grid-container {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
@@ -84,49 +79,42 @@
         }
 
         .card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
             border: 2px solid #2a2a35;
             border-radius: 16px;
             padding: 30px 20px;
             text-align: center;
             text-decoration: none;
-            color: white;
+            color: #fff;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
-        /* 奇数卡片（A, C, E）偏向火风格，偶数（B, D, F）偏向水风格 */
         .card:nth-child(odd):hover {
             border-color: var(--fire-color);
             box-shadow: 0 10px 20px rgba(255, 77, 77, 0.2);
             transform: translateY(-5px);
         }
-
         .card:nth-child(even):hover {
             border-color: var(--water-color);
             box-shadow: 0 10px 20px rgba(51, 204, 255, 0.2);
             transform: translateY(-5px);
         }
 
-        .card .game-tag {
+        .card .tag {
             font-size: 0.9rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
         }
-        .card:nth-child(odd) .game-tag { color: var(--fire-color); }
-        .card:nth-child(even) .game-tag { color: var(--water-color); }
+        .card:nth-child(odd) .tag { color: var(--fire-color); }
+        .card:nth-child(even) .tag { color: var(--water-color); }
 
-        .card h2 {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
+        .card h2 { font-size: 1.6rem; margin-bottom: 8px; }
 
         .card .desc {
             font-size: 0.9rem;
@@ -152,14 +140,9 @@
             font-size: 0.85rem;
             color: #555;
         }
-
-        footer a {
-            color: #888;
-            text-decoration: none;
-        }
+        footer a { color: #888; text-decoration: none; }
         footer a:hover { color: #fff; }
 
-        /* 动画效果 */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -171,72 +154,66 @@
 
         @media (max-width: 600px) {
             header h1 { font-size: 1.8rem; }
-            .grid-container { grid-template-columns: 1fr; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-<br>
+
     <header>
-        <h1>Fireboy & Watergirl Play Online</h1>
-        <p>森林冰火人全系列大合集在线玩 (1 - 6 代)</p>
+        <h1>Fireboy &amp; Watergirl Play Online</h1>
+        <p>森林冰火人全系列在线玩 (1 - 6)</p>
     </header>
 
-    <div class="grid-container">
-        <!-- 1代 -->
-        <a href="output/A/gameIndex.html" class="card">
+    <div class="grid">
+        <a href="games/1-forest-temple/" class="card">
             <div>
-                <div class="game-tag">Game 1</div>
+                <div class="tag">Game 1</div>
                 <h2>森林神庙</h2>
                 <div class="desc">The Forest Temple<br>第一代经典启航</div>
             </div>
             <div class="play-btn">START GAME</div>
         </a>
 
-        <!-- 2代 -->
-        <a href="output/B/gameIndex.html" class="card">
+        <a href="games/2-light-temple/" class="card">
             <div>
-                <div class="game-tag">Game 2</div>
+                <div class="tag">Game 2</div>
                 <h2>光明神庙</h2>
                 <div class="desc">The Light Temple<br>利用光线与镜子解谜</div>
             </div>
             <div class="play-btn">START GAME</div>
         </a>
 
-        <!-- 3代 -->
-        <a href="output/C/gameIndex.html" class="card">
+        <a href="games/3-ice-temple/" class="card">
             <div>
-                <div class="game-tag">Game 3</div>
+                <div class="tag">Game 3</div>
                 <h2>寒冰圣殿</h2>
                 <div class="desc">The Ice Temple<br>冰面滑行与冻结危机</div>
             </div>
             <div class="play-btn">START GAME</div>
         </a>
 
-        <!-- 4代 -->
-        <a href="output/D/gameIndex.html" class="card">
+        <a href="games/4-crystal-temple/" class="card">
             <div>
-                <div class="game-tag">Game 4</div>
+                <div class="tag">Game 4</div>
                 <h2>水晶殿</h2>
                 <div class="desc">The Crystal Temple<br>通过传送门穿梭空间</div>
             </div>
             <div class="play-btn">START GAME</div>
         </a>
 
-        <!-- 5代 -->
-        <a href="output/E/gameIndex.html" class="card">
+        <a href="games/5-elements/" class="card">
             <div>
-                <div class="game-tag">Game 5</div>
+                <div class="tag">Game 5</div>
                 <h2>元素</h2>
                 <div class="desc">Elements<br>全新多神庙元素大集合</div>
             </div>
             <div class="play-btn">START GAME</div>
         </a>
 
-        <!-- 6代 -->
-        <a href="output/F/index.htm" class="card">
+        <a href="games/6-fairy-tales/" class="card">
             <div>
-                <div class="game-tag">Game 6</div>
+                <div class="tag">Game 6</div>
                 <h2>童话</h2>
                 <div class="desc">Fairy Tales<br>操控小精灵协助通关</div>
             </div>
@@ -245,7 +222,11 @@
     </div>
 
     <footer>
-        <p>Copyright © 1224HuangJin | <a href="https://github.com/1224HuangJin/fireboy-and-watergirl" target="_blank">View on GitHub (All files soucre)</a> <br> <a href="https://apps.ak-ioi.com/fireboy-and-watergirl/" target="_blank">Original Game Play Link</a></p>
+        <p>
+            <a href="https://github.com/wyf9/Fireboy-and-Watergirl-deploy" target="_blank">GitHub</a>
+            &nbsp;|&nbsp;
+            <a href="https://github.com/1224HuangJin/fireboy-and-watergirl" target="_blank">Original Source</a>
+        </p>
     </footer>
 
 </body>
