@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("../sw.js", { scope: "/games/" })
+            .then(function (reg) {
+                if (reg.installing && !navigator.serviceWorker.controller) {
+                    reg.installing.addEventListener("statechange", function () {
+                        if (this.state === "activated") location.reload();
+                    });
+                }
+            });
+    }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Fireboy &amp; Watergirl in The Ice Temple</title>
     <link rel="icon" sizes="60x60" href="../../img/icon.png">
@@ -29,8 +41,16 @@
 </head>
 <body>
     <script>
-        window.requireNode = window.require;
-        window.require = undefined;
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("../sw.js", { scope: "/games/" })
+            .then(function (reg) {
+                if (reg.installing && !navigator.serviceWorker.controller) {
+                    reg.installing.addEventListener("statechange", function () {
+                        if (this.state === "activated") location.reload();
+                    });
+                }
+            });
+    }
     </script>
 
     <script data-main="js/game.js" src="../lib/require.js"></script>
@@ -44,15 +64,16 @@
     <button id="btn-fullscreen" class="game-ui-btn" onclick="document.documentElement.requestFullscreen()">Fullscreen</button>
 
     <script>
-        (() => {
-            const btn = document.getElementById('btn-fullscreen');
-            btn.style.display = 'block';
-            const update = () => {
-                btn.style.display = document.fullscreenElement ? 'none' : 'block';
-                requestAnimationFrame(update);
-            };
-            requestAnimationFrame(update);
-        })();
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("../sw.js", { scope: "/games/" })
+            .then(function (reg) {
+                if (reg.installing && !navigator.serviceWorker.controller) {
+                    reg.installing.addEventListener("statechange", function () {
+                        if (this.state === "activated") location.reload();
+                    });
+                }
+            });
+    }
     </script>
     <script src="../lib/touch-controls.js"></script>
 </body>
