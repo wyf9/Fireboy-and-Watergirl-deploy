@@ -10,16 +10,13 @@
 (function () {
     'use strict';
 
-    // Only activate on touch-capable devices
     if (!('ontouchstart' in window) && !navigator.maxTouchPoints) return;
 
-    // Key code map (Phaser uses event.keyCode)
     var KEYS = {
         W: 87, A: 65, D: 68,
         UP: 38, LEFT: 37, RIGHT: 39
     };
 
-    // Track pressed state to avoid duplicate events
     var pressed = {};
 
     function fireKey(code, type) {
@@ -44,29 +41,28 @@
         fireKey(code, 'keyup');
     }
 
-    // ── Build UI ──
-
     var css = document.createElement('style');
     css.textContent = [
-        '.tc-pad { position:fixed; bottom:12px; z-index:9998; display:flex; gap:6px; pointer-events:none; }',
-        '.tc-pad-left  { left:10px;  flex-direction:column; align-items:flex-start; }',
-        '.tc-pad-right { right:10px; flex-direction:column; align-items:flex-end; }',
-        '.tc-row { display:flex; gap:6px; }',
+        '.tc-pad { position:fixed; bottom:16px; z-index:9998; display:flex; gap:8px; pointer-events:none; }',
+        '.tc-pad-left  { left:12px;  flex-direction:column; }',
+        '.tc-pad-right { right:12px; flex-direction:column; }',
+        '.tc-row { display:flex; gap:8px; justify-content:center; }',
         '.tc-btn {',
-        '  pointer-events:auto; width:52px; height:52px; border-radius:12px;',
-        '  background:rgba(255,255,255,0.13); border:1.5px solid rgba(255,255,255,0.25);',
-        '  color:rgba(255,255,255,0.6); font:bold 15px/52px sans-serif; text-align:center;',
+        '  pointer-events:auto; width:60px; height:60px; border-radius:14px;',
+        '  background:rgba(255,255,255,0.15); border:1.5px solid rgba(255,255,255,0.3);',
+        '  color:rgba(255,255,255,0.65); font:bold 18px/60px sans-serif; text-align:center;',
         '  user-select:none; -webkit-user-select:none; touch-action:none;',
-        '  backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);',
+        '  backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);',
         '  transition: background 0.08s;',
         '}',
-        '.tc-btn.active { background:rgba(255,255,255,0.32); }',
+        '.tc-btn.active { background:rgba(255,255,255,0.35); }',
         '.tc-label {',
         '  color:rgba(255,255,255,0.35); font:bold 11px sans-serif;',
         '  pointer-events:none; margin-bottom:4px; text-align:center; width:100%;',
         '}',
-        '.tc-pad-right .tc-label { text-align:right; }',
-        /* hide on landscape-wide screens (likely not phone) */
+        '@media (min-width:768px) {',
+        '  .tc-btn { width:76px; height:76px; font-size:22px; line-height:76px; border-radius:16px; }',
+        '}',
         '@media (min-width:900px) and (hover:hover) { .tc-pad { display:none !important; } }'
     ].join('\n');
     document.head.appendChild(css);
@@ -80,17 +76,12 @@
         lbl.textContent = label;
         pad.appendChild(lbl);
 
-        // Jump button row
         var jumpRow = document.createElement('div');
         jumpRow.className = 'tc-row';
-        if (side === 'right') {
-            jumpRow.style.justifyContent = 'flex-end';
-        }
         var jumpBtn = makeBtn(buttons.jump.text, buttons.jump.code);
         jumpRow.appendChild(jumpBtn);
         pad.appendChild(jumpRow);
 
-        // Left / Right row
         var dirRow = document.createElement('div');
         dirRow.className = 'tc-row';
         dirRow.appendChild(makeBtn(buttons.left.text, buttons.left.code));
@@ -112,24 +103,25 @@
             press(code);
         }, { passive: false });
 
-        btn.addEventListener('touchend', function (e) {
+        btn.addEventListener('touchmove', function (e) {
             e.preventDefault();
+        }, { passive: false });
+
+        btn.addEventListener('touchend', function () {
             btn.classList.remove('active');
             release(code);
-        }, { passive: false });
+        });
 
         btn.addEventListener('touchcancel', function () {
             btn.classList.remove('active');
             release(code);
         });
 
-        // Prevent context menu
         btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 
         return btn;
     }
 
-    // Wait for body to be ready
     function init() {
         makePad('left', 'WATERGIRL', {
             jump:  { text: 'W',  code: KEYS.W },
